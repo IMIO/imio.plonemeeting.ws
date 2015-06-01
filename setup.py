@@ -14,7 +14,7 @@ long_description = (
     + '\n')
 
 setup(
-    name='imio.ws.pm',
+    name='imio.pm.ws',
     version=version,
     description="",
     long_description=long_description,
@@ -29,11 +29,11 @@ setup(
     keywords='',
     author='',
     author_email='',
-    url='https://github.com/IMIO/imio.ws.pm.git',
+    url='https://github.com/IMIO/imio.pm.ws.git',
     license='gpl',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    namespace_packages=['imio', 'imio.ws'],
+    namespace_packages=['imio', 'imio.pm'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
