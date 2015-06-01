@@ -14,7 +14,7 @@ long_description = (
     + '\n')
 
 setup(
-    name='imio.pm.ws',
+    name='imio.plonemeeting.ws',
     version=version,
     description="",
     long_description=long_description,
@@ -29,11 +29,11 @@ setup(
     keywords='',
     author='',
     author_email='',
-    url='https://github.com/IMIO/imio.pm.ws.git',
+    url='https://github.com/IMIO/imio.plonemeeting.ws.git',
     license='gpl',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    namespace_packages=['imio', 'imio.pm'],
+    namespace_packages=['imio', 'imio.plonemeeting'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
