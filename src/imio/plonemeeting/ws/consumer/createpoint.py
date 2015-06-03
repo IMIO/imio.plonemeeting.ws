@@ -3,7 +3,6 @@
 from collective.zamqp.interfaces import IMessageArrivedEvent
 from five import grok
 from imio.dataexchange.core import Response
-from imio.wsresponse.core import IResponse
 from imio.wsresponse.core import IValidation
 from imio.wsresponse.core import ObjectCreation
 from imio.wsresponse.core import Request
@@ -15,13 +14,16 @@ from zope.schema import ValidationError
 
 import cPickle
 
+from imio.plonemeeting.ws.consumer.interfaces import IResponseCreatePoint
+
 
 class ResponseConsumer(Request):
     grok.name('ws.request.pm.createpoint')
     queuename = 'PM.CREATEPOINT.{0}'
+    marker = IResponseCreatePoint
 
 
-@grok.subscribe(IResponse, IMessageArrivedEvent)
+@grok.subscribe(IResponseCreatePoint, IMessageArrivedEvent)
 def consume_requests(message, event):
     request = cPickle.loads(message.body)
 

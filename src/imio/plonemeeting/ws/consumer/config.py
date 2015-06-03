@@ -3,20 +3,22 @@
 from collective.zamqp.interfaces import IMessageArrivedEvent
 from five import grok
 from imio.dataexchange.core import Response
-from imio.wsresponse.core import IResponse
 from imio.wsresponse.core import Request
 from imio.wsresponse.core import ResponsePublisher
 from plone import api
 
 import cPickle
 
+from imio.plonemeeting.ws.consumer.interfaces import IResponseConfig
+
 
 class ResponseConsumer(Request):
     grok.name('ws.request.pm.config')
     queuename = 'PM.CONFIG.{0}'
+    marker = IResponseConfig
 
 
-@grok.subscribe(IResponse, IMessageArrivedEvent)
+@grok.subscribe(IResponseConfig, IMessageArrivedEvent)
 def consume_requests(message, event):
     content = cPickle.loads(message.body)
     publisher = ResponsePublisher()
